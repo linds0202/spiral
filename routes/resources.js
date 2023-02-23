@@ -11,7 +11,7 @@ router.post("/createResource", upload.single("file"), resourcesController.create
 
 // router.put("/addItem/:id", itemsController.addItem);
 
-// router.put("/addItemPrice/:id", itemsController.addItemPrice);
+router.put("/updateResource/:id", resourcesController.updateResource);
 
 // router.put("/checkItem/:id", itemsController.checkItem);
 

@@ -26,7 +26,7 @@
             <input type="text" class="form-control" id="desc" name="desc">
           </div>
           <div class="mb-3">
-            <label for="link" class="form-label">Reosurce title</label>
+            <label for="link" class="form-label">Reosurce link</label>
             <input type="text" class="form-control" id="link" name="link">
           </div>
           <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
@@ -38,6 +38,12 @@
       <h3><%= resources[i].title %></h3>
       <h3><%= resources[i].desc %></h3>
       <h3><%= resources[i].link %></h3>
+      <form
+              action="/resource/deleteResource/<%= resources[i]._id %>?_method=DELETE"
+              method="POST"
+            >
+            <button class="btn btn-primary fa fa-trash" type="submit"></button> 
+          </form>
     <% } %>
   </div>
 </div>

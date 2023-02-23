@@ -102,6 +102,9 @@ body {
 }
 
 .cover-img {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
     border-radius: 5%;
 }
 
