@@ -1,0 +1,25 @@
+<%- include('partials/header') -%>
+
+  <h1 class="list-title">Resource List</h1>
+  
+  <div class="container">
+    <% for(var i=0; i<resources.length; i++) {%>
+          <h2><%= resources[i].title %></h2>
+          <h2><%= resources[i].desc %></h2>
+          <h2><%= resources[i].link %></h2>
+          <form
+              action="/resource/deleteResource/<%= resources[i].id %>?_method=DELETE"
+              method="POST"
+            >
+            <button class="btn btn-primary fa fa-trash" type="submit"></button> 
+          </form>
+      <% } %>
+  </div>  
+  <div class="list-button-container">
+    <div class="list-button">
+      <a class="btn btn-primary" href="/profile">Return to Reosurces List</a>
+    </div>
+  </div>
+<%- include('partials/footer') -%>
+
+

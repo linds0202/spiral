@@ -1,7 +1,7 @@
 {
-  "name": "homeschool-tracker",
+  "name": "binary-upload-boom",
   "version": "1.0.0",
-  "description": "Proof of time well spent",
+  "description": "100Devs Social Network",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
