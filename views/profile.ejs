@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homeschool Tracker</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/imgs/twist.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="header-item">
+        <img src="/imgs/twist.png" alt="Spiral homeschool platform logo" class="logo"/>
+        <div id="header-text">
+          <h3><a id="header-title" href="/profile">Spiral</a></h3>
+          <p id="header-subtitle">Proof of learning</p>
+        </div>
+      </div>
+      <div id="left-header">
+        <div>
+          <p class="user-info"><strong>User Name</strong>: <%= user.userName %></p>
+          <p class="user-info"><strong>Email</strong>: <%= user.email %></p>
+        </div>
+        <div>
+          <a href="/logout" class=" btn btn-primary">Logout</a>
+        </div>
+      </div>  
+    </header>
+    <!-- <nav class="menu-bar">
+      <div class="group">
+        <div class="item title">
+          <img src='/imgs/twist.png' alt='green spiral logo' />
+          <a class="item title">Homeschool Tracker</a>
+        </div>
+      </div>
+      <div class="group">
+        <a class="item">Link 1</a>
+        <a class="item">Link 2</a>
+      </div>
+    </nav> -->
+    <div class="profile-container ">
+      
+    </div>
+  </body>
+</html>
+
+
+
+
+<%- include('partials/footer') -%>
