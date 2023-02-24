@@ -6,9 +6,7 @@ const tagsList = ['Organization', 'Build-Websites', 'No-Code', 'Game-Dev', 'Lear
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      // const resources = await Resource.find({ user: req.user.id });
       const resources = await Resource.find().sort({ createdAt: "desc" }).lean()
-      console.log(resources)
       res.render("profile.ejs", { resources: resources, user: req.user })
     } catch (err) {
       console.log(err)
@@ -16,8 +14,8 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const resources = await Resource.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { resources: resources, tagsList: tagsList });
+      const resources = await Resource.find().sort({ createdAt: "desc" }).lean()
+      res.render("feed.ejs", { resources: resources, tagsList: tagsList })
     } catch (err) {
       console.log(err)
     }
@@ -32,13 +30,12 @@ module.exports = {
   },
   createResource: async (req, res) => {
     try {
-      console.log(req.body)
       await Resource.create({
         title: req.body.title,
         desc: req.body.desc,
         link: req.body.link,
         tags: req.body.tags
-      });
+      })
       console.log("Item has been added!")
       res.redirect("/feed")
     } catch (err) {
@@ -47,17 +44,15 @@ module.exports = {
   },
   addNewTutorial: async (req, res) => {
     const newTutorial = req.body.tutorial
-
-    console.log(newTutorial)
     try {
       await Resource.findOneAndUpdate(
         { _id: req.params.id }, 
         { $push: { tutorials: {tutorial: newTutorial} } },
     )
-      console.log("Updated tutorial list");
-      res.redirect("/feed");
+      console.log("Updated tutorial list")
+      res.redirect("/feed")
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   },
   updateResource: async (req, res) => {
@@ -73,11 +68,11 @@ module.exports = {
             tags: req.body.tags
           },
         }
-      );
-      console.log("Updated Resource");
-      res.redirect("/feed");
+      )
+      console.log("Updated Resource")
+      res.redirect("/feed")
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   },
   deleteResource: async (req, res) => {
@@ -93,16 +88,5 @@ module.exports = {
     } catch (err) {
       res.redirect("/feed")
     }
-    
-    
-    // try {
-    //   await Resource.findOneAndUpdate(
-    //     { _id: req.params.id },
-    //   );
-    //   console.log("Removed resource from shopping list");
-    //   res.redirect("/feed");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   },
-};
+}

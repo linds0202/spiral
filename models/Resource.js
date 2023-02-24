@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const ResourceSchema = new mongoose.Schema({
   title: {
@@ -33,6 +33,6 @@ const ResourceSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+})
 
-module.exports = mongoose.model("Resource", ResourceSchema);
+module.exports = mongoose.model("Resource", ResourceSchema)
