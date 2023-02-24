@@ -1,6 +1,8 @@
 const cloudinary = require("../middleware/cloudinary")
 const Resource = require("../models/Resource")
 
+const tagsList = ['Organization', 'Build-Websites', 'No-Code', 'Game-Dev', 'Learn-to-Code', 'Start-a-Business', 'Music', 'Design', 'Inspiration', 'Assets', 'Free', '<$100', '>$100', 'Subscription', 'Beginner', 'Intermediate', 'Expert']
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -13,8 +15,6 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
-    const tagsList = ['Organization', 'Build-Websites', 'No-Code', 'Game-Dev', 'Learn-to-Code', 'Start-a-Business', 'Music', 'Design', 'Inspiration', 'Assets', 'Free', '<$100', '>$100', 'Subscription', 'Beginner', 'Intermediate', 'Expert']
-    
     try {
       const resources = await Resource.find().sort({ createdAt: "desc" }).lean();
       res.render("feed.ejs", { resources: resources, tagsList: tagsList });
@@ -25,7 +25,7 @@ module.exports = {
   getResource: async (req, res) => {
     try {
       const resource = await Resource.findById(req.params.id)
-      res.render("resource.ejs", { resource: resource })
+      res.render("resource.ejs", { resource: resource, tagsList: tagsList })
     } catch (err) {
       console.log(err)
     }
@@ -69,7 +69,8 @@ module.exports = {
           $set: { 
             title: req.body.title,
             desc: req.body.desc,
-            link: req.body.link
+            link: req.body.link,
+            tags: req.body.tags
           },
         }
       );

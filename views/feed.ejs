@@ -16,7 +16,7 @@
         <input type="text" class="form-control" id="link" name="link">
       </div>
       <label for="tags">Choose tags:</label>
-      <select id="tags" name="tags" multiple>
+      <select id="tags" name="tags" multiple class="tags-list">
         <% for(var i=0; i<tagsList.length; i++) {%>
           <option value="<%= tagsList[i] %>"><%= tagsList[i] %></option>          
         <% } %>

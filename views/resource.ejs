@@ -7,20 +7,26 @@
         <form
             action="/resource/updateResource/<%= resource._id %>?_method=PUT"
             method="POST"
-            class="add-price"
           >
             <div class="mb-3">
               <label for="title" class="form-label">Resource title</label>
-              <input type="text" class="form-control" id="title" name="title">
+              <input type="text" class="form-control" id="title" name="title" value="<%= resource.title %>">
             </div>
             <div class="mb-3">
               <label for="desc" class="form-label">Resource description</label>
-              <input type="text" class="form-control" id="desc" name="desc">
+              <input type="text" class="form-control" id="desc" name="desc" value="<%= resource.desc %>">
             </div>
             <div class="mb-3">
               <label for="link" class="form-label">Resource link</label>
-              <input type="text" class="form-control" id="link" name="link">
+              <input type="text" class="form-control" id="link" name="link" value="<%= resource.link %>">
             </div>
+            <label for="tags">Choose tags:</label>
+            <select id="tags" name="tags" multiple class="tags-list">
+              <% for(var i=0; i<tagsList.length; i++) {%>
+                <option value="<%= tagsList[i] %>"><%= tagsList[i] %></option>          
+              <% } %>
+            </select>
+
             <button class="btn btn-primary fa Square-Plus fontawesomeicon" type="submit"></button>
           </form>
       </div>

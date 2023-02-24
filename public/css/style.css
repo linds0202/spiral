@@ -245,3 +245,7 @@ td {
     padding: 30px;
     display: flex;
 }
+
+.tags-list {
+    width: 200px;
+}
