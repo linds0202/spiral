@@ -13,9 +13,11 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
+    const tagsList = ['Organization', 'Build-Websites', 'No-Code', 'Game-Dev', 'Learn-to-Code', 'Start-a-Business', 'Music', 'Design', 'Inspiration', 'Assets', 'Free', '<$100', '>$100', 'Subscription', 'Beginner', 'Intermediate', 'Expert']
+    
     try {
       const resources = await Resource.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { resources: resources });
+      res.render("feed.ejs", { resources: resources, tagsList: tagsList });
     } catch (err) {
       console.log(err)
     }
@@ -35,11 +37,27 @@ module.exports = {
         title: req.body.title,
         desc: req.body.desc,
         link: req.body.link,
+        tags: req.body.tags
       });
       console.log("Item has been added!")
       res.redirect("/feed")
     } catch (err) {
       console.log(err)
+    }
+  },
+  addNewTutorial: async (req, res) => {
+    const newTutorial = req.body.tutorial
+
+    console.log(newTutorial)
+    try {
+      await Resource.findOneAndUpdate(
+        { _id: req.params.id }, 
+        { $push: { tutorials: {tutorial: newTutorial} } },
+    )
+      console.log("Updated tutorial list");
+      res.redirect("/feed");
+    } catch (err) {
+      console.log(err);
     }
   },
   updateResource: async (req, res) => {

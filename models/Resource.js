@@ -17,10 +17,14 @@ const ResourceSchema = new mongoose.Schema({
     type: [String],
     default: ['']
   },
-  tutorials: {
-    type: [String],
-    default: ['']
-  },
+  tutorials: [
+    {
+      tutorial: {
+        type: String,
+        required: false,
+      }
+    },
+  ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

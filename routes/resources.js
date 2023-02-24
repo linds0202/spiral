@@ -13,6 +13,8 @@ router.post("/createResource", upload.single("file"), resourcesController.create
 
 router.put("/updateResource/:id", resourcesController.updateResource);
 
+router.put("/addNewTutorial/:id", resourcesController.addNewTutorial);
+
 // router.put("/checkItem/:id", itemsController.checkItem);
 
 router.delete("/deleteResource/:id", resourcesController.deleteResource);

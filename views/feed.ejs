@@ -15,6 +15,12 @@
         <label for="link" class="form-label">Resource link</label>
         <input type="text" class="form-control" id="link" name="link">
       </div>
+      <label for="tags">Choose tags:</label>
+      <select id="tags" name="tags" multiple>
+        <% for(var i=0; i<tagsList.length; i++) {%>
+          <option value="<%= tagsList[i] %>"><%= tagsList[i] %></option>          
+        <% } %>
+      </select>
       <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
     </form>
   </div>
@@ -27,16 +33,29 @@
           <h2><%= resources[i].desc %></h2>
           <h2><%= resources[i].link %></h2>
           <h2><%= resources[i]._id %></h2>
+          <h2><%= resources[i].tags %></h2>
+          <% for(var j=0; j<resources[i].tutorials.length; j++) {%>
+            <h2><%= resources[i].tutorials[j].tutorial %></h2> 
+            
+          <% } %> 
+          <form
+            action="/resource/addNewTutorial/<%= resources[i]._id %>?_method=PUT"
+            method="POST"
+            class="add-price"
+          >
+            <input type="text" class="form-control" id="tutorial" name="tutorial" required>
+            <button class="btn btn-primary fa Square-Plus fontawesomeicon" type="submit"></button>
+          </form>
           <form
               action="/resource/deleteResource/<%= resources[i]._id %>?_method=DELETE"
               method="POST"
-            >
+          >
             <button class="btn btn-primary fa fa-trash" type="submit"></button> 
           </form>
           <form
               action="/resource/<%= resources[i]._id %>?_method=GET"
               method="POST"
-            >
+          >
             <button class="btn btn-primary fa Square-Plus fontawesomeicon" type="submit"></button> 
           </form>
           
