@@ -1,8 +1,27 @@
 <%- include('partials/header') -%>
-
-  <h1 class="list-title">Resource List</h1>
+<div class="resources">
+  <div class="form-container ">
+    <h2>Add a Resource</h2>
+    <form action="/resource/createResource" enctype="multipart/form-data" method="POST" class="resources-form">
+      <div class="mb-3">
+        <label for="title" class="form-label">Resource title</label>
+        <input type="text" class="form-control" id="title" name="title">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Resource description</label>
+        <input type="text" class="form-control" id="desc" name="desc">
+      </div>
+      <div class="mb-3">
+        <label for="link" class="form-label">Resource link</label>
+        <input type="text" class="form-control" id="link" name="link">
+      </div>
+      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    </form>
+  </div>
+  
   
   <div class="container">
+    <h1 class="list-title">Resource List</h1>
     <% for(var i=0; i<resources.length; i++) {%>
           <h2><%= resources[i].title %></h2>
           <h2><%= resources[i].desc %></h2>
@@ -23,9 +42,11 @@
           
       <% } %>
   </div>  
+</div>
+
   <div class="list-button-container">
     <div class="list-button">
-      <a class="btn btn-primary" href="/profile">Return to Reosurces List</a>
+      <a class="btn btn-primary" href="/profile">Return to Dashboard</a>
     </div>
   </div>
 <%- include('partials/footer') -%>

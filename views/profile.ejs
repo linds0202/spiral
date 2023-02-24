@@ -3,7 +3,7 @@
 
 <div class="top-container">
   <div class="list-button">
-    <a class="btn btn-primary" href="/feed">Return to Shopping List</a>
+    <a class="btn btn-primary" href="/feed">Return to Resources List</a>
   </div>   
   <div class="inner-container">
       <p class="user-info"><strong>User Name</strong>: <%= user.userName %></p>
@@ -14,36 +14,12 @@
     </div>
 </div>
 <div class="profile-container ">
-  <div class="form-container ">
-        <h2>Add a Resource</h2>
-        <form action="/resource/createResource" enctype="multipart/form-data" method="POST">
-          <div class="mb-3">
-            <label for="title" class="form-label">Reosurce title</label>
-            <input type="text" class="form-control" id="title" name="title">
-          </div>
-          <div class="mb-3">
-            <label for="desc" class="form-label">Reosurce description</label>
-            <input type="text" class="form-control" id="desc" name="desc">
-          </div>
-          <div class="mb-3">
-            <label for="link" class="form-label">Reosurce link</label>
-            <input type="text" class="form-control" id="link" name="link">
-          </div>
-          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-      </form>
-  </div>
   <div class="table-container">
-    <h2>Resource info</h2>
+    <h2>Your Resources</h2>
     <% for(var i=0; i<resources.length; i++) {%>
       <h3><%= resources[i].title %></h3>
       <h3><%= resources[i].desc %></h3>
       <h3><%= resources[i].link %></h3>
-      <form
-              action="/resource/deleteResource/<%= resources[i]._id %>?_method=DELETE"
-              method="POST"
-            >
-            <button class="btn btn-primary fa fa-trash" type="submit"></button> 
-          </form>
     <% } %>
   </div>
 </div>

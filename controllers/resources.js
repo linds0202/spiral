@@ -37,7 +37,7 @@ module.exports = {
         link: req.body.link,
       });
       console.log("Item has been added!")
-      res.redirect("/profile")
+      res.redirect("/feed")
     } catch (err) {
       console.log(err)
     }
@@ -70,9 +70,9 @@ module.exports = {
       // Delete resource from db
       await Resource.remove({ _id: req.params.id })
       console.log("Deleted Resource")
-      res.redirect("/profile")
+      res.redirect("/feed")
     } catch (err) {
-      res.redirect("/profile")
+      res.redirect("/feed")
     }
     
     

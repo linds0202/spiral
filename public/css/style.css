@@ -240,3 +240,8 @@ td {
 .list-button {
     width: 400px;
 }
+
+.resources {
+    padding: 30px;
+    display: flex;
+}
